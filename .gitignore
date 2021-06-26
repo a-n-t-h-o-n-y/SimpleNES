@@ -4,3 +4,7 @@
 *.kdev4
 .kdev*
 build/
+tags
+out.*/
+compile_commands.json
+.cache/

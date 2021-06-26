@@ -4,26 +4,29 @@
 #include "Cartridge.h"
 #include "Mapper.h"
 
-namespace sn
-{
-    class PictureBus
-    {
-        public:
-            PictureBus();
-            Byte read(Address addr);
-            void write(Address addr, Byte value);
+namespace sn {
 
-            bool setMapper(Mapper *mapper);
-            Byte readPalette(Byte paletteAddr);
+class PictureBus {
+   public:
+    PictureBus();
 
-            void updateMirroring();
-        private:
-            std::vector<Byte> m_RAM;
-            std::size_t NameTable0, NameTable1, NameTable2, NameTable3; //indices where they start in RAM vector
+    Byte read(Address addr);
+    void write(Address addr, Byte value);
 
-            std::vector<Byte> m_palette;
+    bool setMapper(Mapper* mapper);
+    Byte readPalette(Byte paletteAddr);
 
-            Mapper* m_mapper;
-    };
-}
-#endif // PICTUREBUS_H
+    void updateMirroring();
+
+   private:
+    std::vector<Byte> m_RAM;
+    std::size_t NameTable0, NameTable1, NameTable2,
+        NameTable3;  // indices where they start in RAM vector
+
+    std::vector<Byte> m_palette;
+
+    Mapper* m_mapper;
+};
+
+}  // namespace sn
+#endif  // PICTUREBUS_H
